@@ -127,9 +127,9 @@ func umCompression(t RenditionCompressionType, r io.Reader) (decoded io.ReadClos
 		if err != nil {
 			return nil, err
 		}
-		decoded = io.NopCloser(bytes.NewBuffer(lzfse.DecodeBuffer(d)))
+		decoded = ioutil.NopCloser(bytes.NewBuffer(lzfse.DecodeBuffer(d)))
 	case kRenditionCompressionType_uncompressed:
-		decoded = io.NopCloser(r)
+		decoded = ioutil.NopCloser(r)
 	// NOTE: do nothing
 	// TODO
 	// case kRenditionCompressionType_deepmap_2:
